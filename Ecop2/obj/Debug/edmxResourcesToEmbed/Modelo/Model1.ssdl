@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PruebaEcopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="CLIENTE_ID" />
+    </Key>
+    <Property Name="CLIENTE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NRO_DOCUMENTO" Type="varchar" MaxLength="12" />
+    <Property Name="TIPO_DOCUMENTO" Type="varchar" MaxLength="20" />
+    <Property Name="RAZON_SOCIAL" Type="varchar" MaxLength="200" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="200" />
+    <Property Name="NRO_TELEFONO" Type="varchar" MaxLength="50" />
+    <Property Name="FECHA_INGRESO" Type="date" />
+    <Property Name="CORREO" Type="varchar" MaxLength="50" />
+    <Property Name="CIUDAD" Type="varchar" MaxLength="200" />
+    <Property Name="BARRIO" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ESTADO_PEDIDO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="50" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PEDIDO_CABECERA">
+    <Key>
+      <PropertyRef Name="PEDIDO_ID" />
+    </Key>
+    <Property Name="PEDIDO_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CLIENTE_ID" Type="int" />
+    <Property Name="CANTIDAD_TOTAL" Type="float" />
+    <Property Name="PRECIO_TOTAL" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ESTADO" Type="varchar" MaxLength="50" />
+    <Property Name="FECHA_INGRESO" Type="date" />
+    <Property Name="FECHA_ENTREGA" Type="date" />
+  </EntityType>
+  <EntityType Name="PEDIDO_DETALLE">
+    <Key>
+      <PropertyRef Name="DETALLE_ID" />
+    </Key>
+    <Property Name="DETALLE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PEDIDO_ID" Type="int" />
+    <Property Name="PRODUCTO_ID" Type="int" />
+    <Property Name="PRECIO" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="CANTIDAD" Type="float" />
+    <Property Name="PRODUCTO_DESCRIPCION" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="PRODUCTO">
+    <Key>
+      <PropertyRef Name="PRODUCTO_ID" />
+    </Key>
+    <Property Name="PRODUCTO_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="50" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" />
+    <Property Name="CANTIDAD" Type="float" />
+    <Property Name="PRECIO1" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="FECHA_INGRESO" Type="date" />
+    <Property Name="UNIDAD_MEDIDA" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TIPO_DOCUMENTO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="20" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UNIDAD_MEDIDA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CODIGO" Type="varchar" MaxLength="50" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="PruebaEcopModelStoreContainer">
+    <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ESTADO_PEDIDO" EntityType="Self.ESTADO_PEDIDO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PEDIDO_CABECERA" EntityType="Self.PEDIDO_CABECERA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PEDIDO_DETALLE" EntityType="Self.PEDIDO_DETALLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPO_DOCUMENTO" EntityType="Self.TIPO_DOCUMENTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UNIDAD_MEDIDA" EntityType="Self.UNIDAD_MEDIDA" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
